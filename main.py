@@ -17,6 +17,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         self.box_whole = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.set_child(self.box_whole)
+        self.box_whole.set_spacing(10)
 
         ## Upper Box
         self.box_upper = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -26,6 +27,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.box_whole.append(self.box_upper)
         self.box_upper.append(self.box_upper_left)
         self.box_upper.append(self.box_upper_right)
+        self.box_upper.set_spacing(5)
 
         self.box_upper.set_spacing(10)
         self.box_upper_left.set_spacing(5)
@@ -191,7 +193,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.box_period_7 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         self.box_lower.append(self.box_period_7)
         ## Buttons
-        elements = ['Fr', 'Ra', 'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
+        elements = ['Fr', 'Ra', 'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
         it = 0
         self.buttons_period_7 = []
         for element in elements:
@@ -207,7 +209,7 @@ class MainWindow(Gtk.ApplicationWindow):
         elements = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Fr', 'Tm', 'Yb']
         it = 0
         self.buttons_period_f1 = []
-        self.period_f1_space = Gtk.Label(label=('        ' * 2))
+        self.period_f1_space = Gtk.Label(label=('        ' * 4))
         self.box_period_f1.append(self.period_f1_space)
         for element in elements:
             self.buttons_period_f1.append(Gtk.Button(label=element))
@@ -222,13 +224,16 @@ class MainWindow(Gtk.ApplicationWindow):
         elements = ['Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No']
         it = 0
         self.buttons_period_f2 = []
-        self.period_f2_space = Gtk.Label(label=('        ' * 2))
+        self.period_f2_space = Gtk.Label(label=('        ' * 4))
         self.box_period_f2.append(self.period_f2_space)
         for element in elements:
             self.buttons_period_f2.append(Gtk.Button(label=element))
             self.buttons_period_f2[it].connect('clicked', self.add_mass, element)
             self.box_period_f2.append(self.buttons_period_f2[it])
             it = it + 1
+
+        # Pre-Run Actions
+        self.update_mass()
         
 
     # Actions
@@ -255,6 +260,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self.mm.round = False
         self.label_mass.set_text(f'{self.mm.mass} g/mol')
         self.update_compound()
+        self.label_mass.set_markup(f'<b>{self.mm.mass} g/mol</b>')
     
     # Update Compound
     def update_compound(self):
