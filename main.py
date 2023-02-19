@@ -172,6 +172,8 @@ class MainWindow(Gtk.ApplicationWindow):
             self.buttons_period_5[it].connect('clicked', self.add_mass, element)
             self.box_period_5.append(self.buttons_period_5[it])
             it = it + 1
+        
+        
 
     # Actions
     # Add Mass
