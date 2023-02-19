@@ -198,6 +198,11 @@ class MainWindow(Gtk.ApplicationWindow):
         else:
             self.mm.round = False
         self.label_mass.set_text(f'{self.mm.mass} g/mol')
+        self.update_compound()
+    
+    # Update Compound
+    def update_compound(self):
+        self.label_molecule.set_text(f'{self.mm.compound}')
 
 class App(Adw.Application):
     def __init__(self, **kwargs):
