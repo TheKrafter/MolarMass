@@ -52,6 +52,7 @@ class MainWindow(Gtk.ApplicationWindow):
         ### Rounding Checkbox
         self.check_rounding = Gtk.CheckButton(label="Round 3 SigFigs")
         self.box_upper_right.append(self.check_rounding)
+        self.check_rounding.set_active(True)
 
         ## Periodic Table of Buttons
         ### Period 1
