@@ -1,0 +1,4 @@
+# Also Requires gobject-introspection, Gtk 4, and LibAdwaita 1
+pyyaml
+sigfig
+logging42
