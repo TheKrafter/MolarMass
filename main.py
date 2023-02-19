@@ -32,8 +32,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.box_upper_right.set_spacing(5)
 
         ## Lower Box
-        self.box_lower = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-
+        self.box_lower = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.box_whole.append(self.box_lower)
 
         ## Left Side Display
@@ -53,6 +52,34 @@ class MainWindow(Gtk.ApplicationWindow):
         ### Rounding Checkbox
         self.check_rounding = Gtk.CheckButton(label="Round 3 SigFigs")
         self.box_upper_right.append(self.check_rounding)
+
+        ## Periodic Table of Buttons
+        ### Period 1
+        self.box_period_1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_lower.append(self.box_period_1)
+        #### Buttons
+        self.button_h = Gtk.Button(label="H")
+        self.button_h.connect('clicked', self.add_mass, 'H')
+        self.box_period_1.append(self.button_h)
+        
+        self.box_period_1_space = Gtk.Label(label="                                ")
+        self.box_period_1.append(self.box_period_1_space)
+
+        self.button_he = Gtk.Button(label="He")
+        self.button_he.connect('clicked', self.add_mass, 'He')
+        self.box_period_1.append(self.button_he)
+
+        ### Period 2
+        self.box_period_2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_lower.append(self.box_period_2)
+        #### Buttons
+        self.button_li = Gtk.Button(label="Li")
+        self.button_li.connect('clicked', self.add_mass, 'Li')
+        self.box_period_2.append(self.button_li)
+
+        self.button_be = Gtk.Button(label="Be")
+        self.button_be.connect('clicked', self.add_mass, 'Be')
+        self.box_period_2.append(self.button_be)
     
     # Actions
     # Add Mass
@@ -67,7 +94,7 @@ class MainWindow(Gtk.ApplicationWindow):
     # Reset
     def clear_mass(self, button):
         self.mm.clear()
-        self.label_mass
+        self.update_mass()
         logger.debug('Cleared Molar Mass.')
     
     # Update Mass
@@ -76,7 +103,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self.mm.round = True
         else:
             self.mm.round = False
-        self.label_mass.setText(f'{mm.mass} g/mol')
+        self.label_mass.set_text(f'{self.mm.mass} g/mol')
 
 class App(Adw.Application):
     def __init__(self, **kwargs):
