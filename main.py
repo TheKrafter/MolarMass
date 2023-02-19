@@ -174,6 +174,19 @@ class MainWindow(Gtk.ApplicationWindow):
             self.box_period_5.append(self.buttons_period_5[it])
             it = it + 1
         
+        ## Period 6
+        self.box_period_6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_lower.append(self.box_period_6)
+        ## Buttons
+        elements = []
+        it = 0
+        self.buttons_period_6 = []
+        for element in elements:
+            self.buttons_period_6.append(Gtk.Button(label=element))
+            self.buttons_period_6[it].connect('clicked', self.add_mass, element)
+            self.box_period_6.append(self.buttons_period_6[it])
+            it = it + 1
+        
         
 
     # Actions
