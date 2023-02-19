@@ -17,10 +17,9 @@ class MolarMass:
         except:
             logger.critical(f'Failed to find mass of {element}!')
             return False
-        if self.round == True:
-            add = round(add, sigfigs=3)
-            self.mass = round(self.mass, sigfigs=3)
         self.mass += add
+        if self.round:
+            self.mass = round(self.mass, sigfigs = 3)
         return True
     
     def clear(self):
