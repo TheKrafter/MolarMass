@@ -42,12 +42,16 @@ class MolarMass:
                 logger.info(f'There is only one {element} in the compound, making 2 now.')
                 working = working.replace(element, f'{element}2')
             elif parts[2][0].isdigit():
-                logger.info(f'There are 2 or more {element} in compound')
-                qty_old = parts[2][0]
-                qty = str(int(parts[2][0]) + 1)
+                qty_old = ''
+                for item in parts[2]:
+                    if item.isdigit():
+                        qty_old += item
+                logger.info(f'There are {qty_old} {element} in compound')
+                qty = str(int(qty_old) + 1)
                 working = working.replace(f'{element + qty_old}', f'{element + qty}')
             else:
-                logger.critical('Something messed up!')
+                logger.info(f'There is only one {element} in the compound, making 2 now.')
+                working = working.replace(element, f'{element}2')
             
         else:
             working += element
