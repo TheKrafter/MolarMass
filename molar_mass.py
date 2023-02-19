@@ -32,28 +32,23 @@ class MolarMass:
     def compound_add(self, element):
         sub = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
         norm = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
-        working = self.compound.translate(sub)
+        working = self.compound.translate(norm)
         if working == self.compound_start:
             working = element
         elif element in working:
             logger.debug(f'Found {element} in compound {working}')
-            comp = working.partition(element)
-            after = comp[2]
-            try:
-                qty = int(after[0])
-                qty += 1
-                after[0] = str(qty)
-                working = comp[0] + comp[1] + comp[2]
-                errors = False
-            except IndexError:
-                qty = 2
-                errors = True
-            except ValueError:
-                qty = 2
-                errors = True
-            if errors:
-                working.replace(element, f'{element}{str(qty)}')
+            parts = working.partition(element)
+            if parts[2] == '':
+                logger.info(f'There is only one {element} in the compound, making 2 now.')
+                working = working.replace(element, f'{element}2')
+            elif parts[2][0].isdigit():
+                logger.info(f'There are 2 or more {element} in compound')
+                qty_old = parts[2][0]
+                qty = str(int(parts[2][0]) + 1)
+                working = working.replace(f'{element + qty_old}', f'{element + qty}')
+            else:
+                logger.critical('Something messed up!')
             
         else:
             working += element
-        self.compound = working.translate(norm)
+        self.compound = working.translate(sub)
