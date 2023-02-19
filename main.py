@@ -178,7 +178,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.box_period_6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         self.box_lower.append(self.box_period_6)
         ## Buttons
-        elements = []
+        elements = ['Cs', 'Ba', 'Lu', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn']
         it = 0
         self.buttons_period_6 = []
         for element in elements:
@@ -187,6 +187,48 @@ class MainWindow(Gtk.ApplicationWindow):
             self.box_period_6.append(self.buttons_period_6[it])
             it = it + 1
         
+        ## Period 7
+        self.box_period_7 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_lower.append(self.box_period_7)
+        ## Buttons
+        elements = ['Fr', 'Ra', 'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
+        it = 0
+        self.buttons_period_7 = []
+        for element in elements:
+            self.buttons_period_7.append(Gtk.Button(label=element))
+            self.buttons_period_7[it].connect('clicked', self.add_mass, element)
+            self.box_period_7.append(self.buttons_period_7[it])
+            it = it + 1
+        
+        ## F-Block pt1
+        self.box_period_f1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_lower.append(self.box_period_f1)
+        ## Buttons
+        elements = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Fr', 'Tm', 'Yb']
+        it = 0
+        self.buttons_period_f1 = []
+        self.period_f1_space = Gtk.Label(label=('        ' * 2))
+        self.box_period_f1.append(self.period_f1_space)
+        for element in elements:
+            self.buttons_period_f1.append(Gtk.Button(label=element))
+            self.buttons_period_f1[it].connect('clicked', self.add_mass, element)
+            self.box_period_f1.append(self.buttons_period_f1[it])
+            it = it + 1
+        
+        ## F-Block pt2
+        self.box_period_f2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.box_lower.append(self.box_period_f2)
+        ## Buttons
+        elements = ['Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No']
+        it = 0
+        self.buttons_period_f2 = []
+        self.period_f2_space = Gtk.Label(label=('        ' * 2))
+        self.box_period_f2.append(self.period_f2_space)
+        for element in elements:
+            self.buttons_period_f2.append(Gtk.Button(label=element))
+            self.buttons_period_f2[it].connect('clicked', self.add_mass, element)
+            self.box_period_f2.append(self.buttons_period_f2[it])
+            it = it + 1
         
 
     # Actions
