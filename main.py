@@ -57,6 +57,17 @@ class MainWindow(Gtk.ApplicationWindow):
         self.check_rounding.set_active(True)
 
         ## Periodic Table of Buttons
+        self.peridoic_grid = Gtk.Grid()
+        self.box_lower.append(self.peridoic_grid)
+
+        ### Period 1
+        self.element_h = Gtk.Button(label='H')
+        self.element_h.connect('clicked', self.add_mass, 'H')
+        self.peridoic_grid.attach(self.element_h, column=1, row=1, width=1, height=1)
+        
+
+        """
+        ## Periodic Table of Buttons
         ### Period 1
         self.box_period_1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         self.box_lower.append(self.box_period_1)
@@ -231,6 +242,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self.buttons_period_f2[it].connect('clicked', self.add_mass, element)
             self.box_period_f2.append(self.buttons_period_f2[it])
             it = it + 1
+        """
 
         # Pre-Run Actions
         self.update_mass()
