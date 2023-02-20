@@ -37,6 +37,11 @@ class MainWindow(Gtk.ApplicationWindow):
         self.box_lower = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.box_whole.append(self.box_lower)
 
+        ### Scrollability
+        self.viewport_periodic = Gtk.Viewport()
+        self.box_lower.append(self.viewport_periodic)
+
+
         ## Left Side Display
         ### Molecule Name
         self.label_molecule = Gtk.Label(label="Tap an Element!")
@@ -58,7 +63,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         ## Periodic Table of Buttons
         self.peridoic_grid = Gtk.Grid()
-        self.box_lower.append(self.peridoic_grid)
+        self.viewport_periodic.set_child(self.peridoic_grid)
 
         ### Labels
         self.label_groups = []
