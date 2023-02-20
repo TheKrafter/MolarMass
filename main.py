@@ -57,181 +57,158 @@ class MainWindow(Gtk.ApplicationWindow):
         self.check_rounding.set_active(True)
 
         ## Periodic Table of Buttons
-        ### Period 1
-        self.box_period_1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_1)
-        #### Buttons
-        self.button_h = Gtk.Button(label="H")
-        self.button_h.connect('clicked', self.add_mass, 'H')
-        self.box_period_1.append(self.button_h)
-        
-        self.box_period_1_space = Gtk.Label(label=(" " * 260))
-        self.box_period_1.append(self.box_period_1_space)
+        self.peridoic_grid = Gtk.Grid()
+        self.box_lower.append(self.peridoic_grid)
 
-        self.button_he = Gtk.Button(label="He")
-        self.button_he.connect('clicked', self.add_mass, 'He')
-        self.box_period_1.append(self.button_he)
+        ### Labels
+        self.label_groups = []
+        for i in range(18):
+            self.label_groups.append(Gtk.Label(label=f'{str(i+1)}'))
+            self.peridoic_grid.attach(self.label_groups[i], column=(i+1), row = 0, width=1, height=1)
+        
+        self.label_periods = []
+        for i in range(7):
+            self.label_periods.append(Gtk.Label(label=f'{str(i+1)}'))
+            self.peridoic_grid.attach(self.label_periods[i], column=0, row=(i+1), width=1, height=1)
+
+        ### Period 1
+        self.element_h = Gtk.Button(label='H')
+        self.element_h.connect('clicked', self.add_mass, 'H')
+        self.peridoic_grid.attach(self.element_h, column=1, row=1, width=1, height=1)
+
+        self.element_he = Gtk.Button(label='He')
+        self.element_he.connect('clicked', self.add_mass, 'He')
+        self.peridoic_grid.attach(self.element_he, column=18, row=1, width=1, height=1)
 
         ### Period 2
-        self.box_period_2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_2)
-        #### Buttons
-        self.button_li = Gtk.Button(label="Li")
-        self.button_li.connect('clicked', self.add_mass, 'Li')
-        self.box_period_2.append(self.button_li)
+        self.element_li = Gtk.Button(label='Li')
+        self.element_li.connect('clicked', self.add_mass, 'Li')
+        self.peridoic_grid.attach(self.element_li, column=1, row=2, width=1, height=1)
 
-        self.button_be = Gtk.Button(label="Be")
-        self.button_be.connect('clicked', self.add_mass, 'Be')
-        self.box_period_2.append(self.button_be)
+        self.element_be = Gtk.Button(label='Be')
+        self.element_be.connect('clicked', self.add_mass, 'Be')
+        self.peridoic_grid.attach(self.element_be, column=2, row=2, width=1, height=1)
 
-        self.box_period_2_space = Gtk.Label(label=("                " * 10))
-        self.box_period_2.append(self.box_period_2_space)
+        self.element_b = Gtk.Button(label='B')
+        self.element_b.connect('clicked', self.add_mass, 'B')
+        self.peridoic_grid.attach(self.element_b, column=13, row=2, width=1, height=1)
 
-        self.button_b = Gtk.Button(label="B")
-        self.button_b.connect('clicked', self.add_mass, 'B')
-        self.box_period_2.append(self.button_b)
+        self.element_c = Gtk.Button(label='C')
+        self.element_c.connect('clicked', self.add_mass, 'C')
+        self.peridoic_grid.attach(self.element_c, column=14, row=2, width=1, height=1)
 
-        self.button_c = Gtk.Button(label="C")
-        self.button_c.connect('clicked', self.add_mass, 'C')
-        self.box_period_2.append(self.button_c)
+        self.element_n = Gtk.Button(label='N')
+        self.element_n.connect('clicked', self.add_mass, 'N')
+        self.peridoic_grid.attach(self.element_n, column=15, row=2, width=1, height=1)
 
-        self.button_n = Gtk.Button(label="N")
-        self.button_n.connect('clicked', self.add_mass, 'N')
-        self.box_period_2.append(self.button_n)
+        self.element_o = Gtk.Button(label='O')
+        self.element_o.connect('clicked', self.add_mass, 'O')
+        self.peridoic_grid.attach(self.element_o, column=16, row=2, width=1, height=1)
 
-        self.button_o = Gtk.Button(label="O")
-        self.button_o.connect('clicked', self.add_mass, 'O')
-        self.box_period_2.append(self.button_o)
+        self.element_f = Gtk.Button(label='F')
+        self.element_f.connect('clicked', self.add_mass, 'F')
+        self.peridoic_grid.attach(self.element_f, column=17, row=2, width=1, height=1)
 
-        self.button_f = Gtk.Button(label="F")
-        self.button_f.connect('clicked', self.add_mass, 'F')
-        self.box_period_2.append(self.button_f)
+        self.element_ne = Gtk.Button(label='Ne')
+        self.element_ne.connect('clicked', self.add_mass, 'Ne')
+        self.peridoic_grid.attach(self.element_ne, column=18, row=2, width=1, height=1)
 
-        self.button_ne = Gtk.Button(label="Ne")
-        self.button_ne.connect('clicked', self.add_mass, 'Ne')
-        self.box_period_2.append(self.button_ne)
+        ### Period 3
+        self.element_na = Gtk.Button(label='Na')
+        self.element_na.connect('clicked', self.add_mass, 'Na')
+        self.peridoic_grid.attach(self.element_na, column=1, row=3, width=1, height=1)
 
-        ## Period 3
-        self.box_period_3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_3)
-        ### Buttons
-        self.button_na = Gtk.Button(label="Na")
-        self.button_na.connect('clicked', self.add_mass, 'Na')
-        self.box_period_3.append(self.button_na)
+        self.element_mg = Gtk.Button(label='Mg')
+        self.element_mg.connect('clicked', self.add_mass, 'Mg')
+        self.peridoic_grid.attach(self.element_mg, column=2, row=3, width=1, height=1)
 
-        self.button_mg = Gtk.Button(label="Mg")
-        self.button_mg.connect('clicked', self.add_mass, 'Mg')
-        self.box_period_3.append(self.button_mg)
+        self.element_al = Gtk.Button(label='Al')
+        self.element_al.connect('clicked', self.add_mass, 'Al')
+        self.peridoic_grid.attach(self.element_al, column=13, row=3, width=1, height=1)
 
-        self.box_period_3_space = Gtk.Label(label=("                " * 10))
-        self.box_period_3.append(self.box_period_3_space)
+        self.element_si = Gtk.Button(label='Si')
+        self.element_si.connect('clicked', self.add_mass, 'Si')
+        self.peridoic_grid.attach(self.element_si, column=14, row=3, width=1, height=1)
 
-        self.button_al = Gtk.Button(label="Al")
-        self.button_al.connect('clicked', self.add_mass, 'Al')
-        self.box_period_3.append(self.button_al)
+        self.element_p = Gtk.Button(label='P')
+        self.element_p.connect('clicked', self.add_mass, 'P')
+        self.peridoic_grid.attach(self.element_p, column=15, row=3, width=1, height=1)
 
-        self.button_si = Gtk.Button(label="Si")
-        self.button_si.connect('clicked', self.add_mass, 'Si')
-        self.box_period_3.append(self.button_si)
+        self.element_s = Gtk.Button(label='S')
+        self.element_s.connect('clicked', self.add_mass, 'S')
+        self.peridoic_grid.attach(self.element_s, column=16, row=3, width=1, height=1)
 
-        self.button_p = Gtk.Button(label="P")
-        self.button_p.connect('clicked', self.add_mass, 'P')
-        self.box_period_3.append(self.button_p)
+        self.element_cl = Gtk.Button(label='Cl')
+        self.element_cl.connect('clicked', self.add_mass, 'Cl')
+        self.peridoic_grid.attach(self.element_cl, column=17, row=3, width=1, height=1)
 
-        self.button_s = Gtk.Button(label="S")
-        self.button_s.connect('clicked', self.add_mass, 'S')
-        self.box_period_3.append(self.button_s)
+        self.element_ar = Gtk.Button(label='Ar')
+        self.element_ar.connect('clicked', self.add_mass, 'Ar')
+        self.peridoic_grid.attach(self.element_ar, column=18, row=3, width=1, height=1)
 
-        self.button_cl = Gtk.Button(label="Cl")
-        self.button_cl.connect('clicked', self.add_mass, 'Cl')
-        self.box_period_3.append(self.button_cl)
-
-        self.button_ar = Gtk.Button(label="Ar")
-        self.button_ar.connect('clicked', self.add_mass, 'Ar')
-        self.box_period_3.append(self.button_ar)
-
-        ## Period 4
-        self.box_period_4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_4)
-        ## Buttons
+        ### Period 4
         elements = ['K', 'Ca', 'Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr']
         it = 0
-        self.buttons_period_4 = []
+        self.elements_period_4 = []
         for element in elements:
-            self.buttons_period_4.append(Gtk.Button(label=element))
-            self.buttons_period_4[it].connect('clicked', self.add_mass, element)
-            self.box_period_4.append(self.buttons_period_4[it])
-            it = it + 1
+            self.elements_period_4.append(Gtk.Button(label=element))
+            self.elements_period_4[it].connect('clicked', self.add_mass, element)
+            self.peridoic_grid.attach(self.elements_period_4[it], column=(it+1), row=4, width=1, height=1)
+            it += 1
         
-        ## Period 5
-        self.box_period_5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_5)
-        ## Buttons
+        ### Period 5
         elements = ['Rb', 'Sr', 'Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te', 'I', 'Xe']
         it = 0
-        self.buttons_period_5 = []
+        self.elements_period_5 = []
         for element in elements:
-            self.buttons_period_5.append(Gtk.Button(label=element))
-            self.buttons_period_5[it].connect('clicked', self.add_mass, element)
-            self.box_period_5.append(self.buttons_period_5[it])
-            it = it + 1
-        
-        ## Period 6
-        self.box_period_6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_6)
-        ## Buttons
+            self.elements_period_5.append(Gtk.Button(label=element))
+            self.elements_period_5[it].connect('clicked', self.add_mass, element)
+            self.peridoic_grid.attach(self.elements_period_5[it], column=(it+1), row=5, width=1, height=1)
+            it += 1
+
+        ### Period 6
         elements = ['Cs', 'Ba', 'Lu', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn']
         it = 0
-        self.buttons_period_6 = []
+        self.elements_period_6 = []
         for element in elements:
-            self.buttons_period_6.append(Gtk.Button(label=element))
-            self.buttons_period_6[it].connect('clicked', self.add_mass, element)
-            self.box_period_6.append(self.buttons_period_6[it])
-            it = it + 1
-        
-        ## Period 7
-        self.box_period_7 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_7)
-        ## Buttons
+            self.elements_period_6.append(Gtk.Button(label=element))
+            self.elements_period_6[it].connect('clicked', self.add_mass, element)
+            self.peridoic_grid.attach(self.elements_period_6[it], column=(it+1), row=6, width=1, height=1)
+            it += 1
+
+        ### Period 7
         elements = ['Fr', 'Ra', 'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
         it = 0
-        self.buttons_period_7 = []
+        self.elements_period_7 = []
         for element in elements:
-            self.buttons_period_7.append(Gtk.Button(label=element))
-            self.buttons_period_7[it].connect('clicked', self.add_mass, element)
-            self.box_period_7.append(self.buttons_period_7[it])
-            it = it + 1
+            self.elements_period_7.append(Gtk.Button(label=element))
+            self.elements_period_7[it].connect('clicked', self.add_mass, element)
+            self.peridoic_grid.attach(self.elements_period_7[it], column=(it+1), row=7, width=1, height=1)
+            it += 1
         
-        ## F-Block pt1
-        self.box_period_f1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_f1)
-        ## Buttons
+        ### F-Block
+        #### Spacer
+        self.spacer_fblock = Gtk.Label(label='   ')
+        self.peridoic_grid.attach(self.spacer_fblock, column=0, row=8, width=19, height=1)
+        #### Part 1
         elements = ['La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Fr', 'Tm', 'Yb']
         it = 0
-        self.buttons_period_f1 = []
-        self.period_f1_space = Gtk.Label(label=('        ' * 4))
-        self.box_period_f1.append(self.period_f1_space)
+        self.elements_fblock_1 = []
         for element in elements:
-            self.buttons_period_f1.append(Gtk.Button(label=element))
-            self.buttons_period_f1[it].connect('clicked', self.add_mass, element)
-            self.box_period_f1.append(self.buttons_period_f1[it])
-            it = it + 1
-        
-        ## F-Block pt2
-        self.box_period_f2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self.box_lower.append(self.box_period_f2)
-        ## Buttons
+            self.elements_fblock_1.append(Gtk.Button(label=element))
+            self.elements_fblock_1[it].connect('clicked', self.add_mass, element)
+            self.peridoic_grid.attach(self.elements_fblock_1[it], column=(it+3), row=9, width=1, height=1)
+            it += 1
+
+        #### Part 2
         elements = ['Ac', 'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No']
         it = 0
-        self.buttons_period_f2 = []
-        self.period_f2_space = Gtk.Label(label=('        ' * 4))
-        self.box_period_f2.append(self.period_f2_space)
+        self.elements_fblock_2 = []
         for element in elements:
-            self.buttons_period_f2.append(Gtk.Button(label=element))
-            self.buttons_period_f2[it].connect('clicked', self.add_mass, element)
-            self.box_period_f2.append(self.buttons_period_f2[it])
-            it = it + 1
-
+            self.elements_fblock_2.append(Gtk.Button(label=element))
+            self.elements_fblock_2[it].connect('clicked', self.add_mass, element)
+            self.peridoic_grid.attach(self.elements_fblock_2[it], column=(it+3), row=10, width=1, height=1)
+            it += 1
         # Pre-Run Actions
         self.update_mass()
         
