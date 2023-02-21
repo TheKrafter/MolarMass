@@ -39,8 +39,9 @@ class MainWindow(Gtk.ApplicationWindow):
 
         ### Scrollability
         self.viewport_periodic = Gtk.Viewport()
-        self.box_lower.append(self.viewport_periodic)
-
+        self.viewport_adjustment = Gtk.Adjustment(lower=50, upper=5000, step_increment=10)
+        self.box_lower.append(self.viewport_periodic) 
+        self.viewport_periodic.set_hadjustment(self.viewport_adjustment)
 
         ## Left Side Display
         ### Molecule Name
