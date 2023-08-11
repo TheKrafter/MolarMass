@@ -38,9 +38,11 @@ class MainWindow(Gtk.ApplicationWindow):
         self.box_whole.append(self.box_lower)
 
         ### Scrollability
-        self.viewport_periodic = Gtk.Viewport()
+        self.scrolled_window = Gtk.ScrolledWindow.new()
+        self.viewport_periodic = Gtk.Viewport.new()
+        self.scrolled_window.set_child(self.viewport_periodic)
         self.viewport_adjustment = Gtk.Adjustment(lower=50, upper=5000, step_increment=10)
-        self.box_lower.append(self.viewport_periodic) 
+        self.box_lower.append(self.scrolled_window) 
         self.viewport_periodic.set_hadjustment(self.viewport_adjustment)
 
         ## Left Side Display
